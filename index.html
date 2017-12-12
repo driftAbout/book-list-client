@@ -2,11 +2,34 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>Hello World</title>
+    <title>Roger and Kevin: Bookies</title>
+    <link rel="stylesheet" href="styles/reset.css">
+    <link rel="stylesheet" href="styles/base.css">
+    <link rel="stylesheet" href="styles/layout.css">
+    <link rel="stylesheet" href="styles/modules.css">
+    <script id="book-template", type="text/x-handlebars-template">
+      <div class='book'>
+        <img src="{{image_url}}">
+        <div class="book-footer">
+          <h2>{{title}}<h2>
+          <p>{{author}}</p>
+        </div>
+      </div>
+    </script>
   </head>
   <body>
-<h1>Oi Kevin's in the house</h1>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <header>
+      <h1>Book App</h1>
+    </header>
+    <section id="books">
+      <div class='book'>
+        <img src="http://placehold.it/480x320">
+        <div class="book-footer">
+          <h2>The Book Title<h2>
+          <p>The Author</p>
+        </div>
+    </section>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
   </body>
 
 </html>

@@ -1,0 +1,16 @@
+section{
+  background-color: #ddd;
+  width: 440px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+header{
+  width: 480px;
+  margin: 0 auto;
+  background-color: #555;
+}
+
+img{
+  width: 100%;
+}
