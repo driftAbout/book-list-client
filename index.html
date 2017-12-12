@@ -7,8 +7,8 @@
     <link rel="stylesheet" href="styles/base.css">
     <link rel="stylesheet" href="styles/layout.css">
     <link rel="stylesheet" href="styles/modules.css">
-    <script id="book-template", type="text/x-handlebars-template">
-      <div class='book'>
+    <script id="book-list-template", type="text/x-handlebars-template">
+      <div class='book-view'>
         <img src="{{image_url}}">
         <div class="book-footer">
           <h2>{{title}}<h2>
@@ -21,15 +21,12 @@
     <header>
       <h1>Book App</h1>
     </header>
-    <section id="books">
-      <div class='book'>
-        <img src="http://placehold.it/480x320">
-        <div class="book-footer">
-          <h2>The Book Title<h2>
-          <p>The Author</p>
-        </div>
+    <section id="book-list">
     </section>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.11/handlebars.min.js"></script>
+    <script src="scripts/book.js"></script>
+    <script src="scripts/bookView.js"></script>
   </body>
 
 </html>
