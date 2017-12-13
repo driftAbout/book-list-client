@@ -1,0 +1,21 @@
+header{
+  width: 100%;
+  height: 120px;
+  background-color: #555;
+}
+
+h1 {
+  margin: 30px;
+  padding-top: 40px;
+  color:#FFF;
+  font-family: Verdana;
+  font-size: 36px;
+}
+
+
+@media screen and (min-width: 480px){
+
+header{
+  width: 480px;
+  margin: 0 auto;
+}
