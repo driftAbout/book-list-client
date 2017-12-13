@@ -39,18 +39,19 @@ var app = app || {};
       })
       .catch(err => errorCallback(err));
 
-  }
+  };
 
-  Book.fetchOne = function (ctx, next()) {
+  Book.fetchOne = function (ctx, callback) {
     $.get(`${__API_URL__}/${ctx.params.id}`)
-    .then(data => {
-      ctx.author = this.author;
-      ctx.title = this.title;
-      ctx.description = this.description;
-      ctx.image_url = this.image_url;
-      ctx.book_id = this.book_id;
-    })
-    .catch(errorCallback(err))
+      .then(data => {
+        ctx.author = this.author;
+        ctx.title = this.title;
+        ctx.description = this.description;
+        ctx.image_url = this.image_url;
+        ctx.book_id = this.book_id;
+      })
+      .then(callback)
+      .catch(errorCallback(err))
   }
 
   function errorCallback(error) {

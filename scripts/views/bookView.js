@@ -4,7 +4,7 @@ let bookView = {};
 
 
 bookView.initIndexPage = function() {
-  console.log('book.all',Book.all);
+  console.log('book.all',app.Book.all);
   $('.container').hide();
   $('#book-view').show();
 
@@ -14,10 +14,10 @@ bookView.initIndexPage = function() {
   });
 };
 
-BookView.initDetailPage= function() {
+bookView.initDetailPage= function() {
   $('.container').hide();
   $('#detail-view').show();
-  $('#detail-view').append(Book.oneToHtml());
+  $('#detail-view').append(app.Book.oneToHtml());
 }
 
 $(document).ready(()=> {
