@@ -18,9 +18,14 @@ var app = app || {};
     let template  = Handlebars.compile($('#book-list-template').text());
     return template(this);
   };
-  Book.prototype.oneToHtml = function() {
-    let template = Handlebars.compile($('#detail-view-template').text());
-    return template(this);
+  // Book.prototype.oneToHtml = function(bookObj) {
+  //   let template = Handlebars.compile($('#detail-template').text());
+  //   return template(bookObj);
+  // };
+
+  Book.oneToHtml = function(bookObj) {
+    let template = Handlebars.compile($('#detail-template').text());
+    return template(bookObj);
   };
 
   Book.all = [];
@@ -37,21 +42,23 @@ var app = app || {};
         Book.loadAll(data)
         if (callback) callback();
       })
-      .catch(err => errorCallback(err));
+      .catch(errorCallback);
 
   };
 
   Book.fetchOne = function (ctx, callback) {
-    $.get(`${__API_URL__}/${ctx.params.id}`)
+    $.get(`${__API_URL__}/api/v1/books/${ctx.params.id}`)
       .then(data => {
-        ctx.author = this.author;
-        ctx.title = this.title;
-        ctx.description = this.description;
-        ctx.image_url = this.image_url;
-        ctx.book_id = this.book_id;
+        console.log('data', data);
+        ctx.author = data[0].author;
+        ctx.title = data[0].title;
+        ctx.description = data[0].description;
+        ctx.image_url = data[0].image_url;
+        ctx.book_id = data[0].book_id;
+        //let this_book = new Book({'author': data[0].author});
       })
-      .then(callback)
-      .catch(errorCallback(err))
+      .then(() => callback(ctx))
+      .catch(errorCallback)
   }
 
   function errorCallback(error) {
