@@ -3,7 +3,7 @@
 let bookView = {};
 
 bookView.initIndexPage = function(){
-  console.log('book.all',Book.all);
+  //console.log('book.all',Book.all);
   $('.container').hide();
   $('.book-view').show();
   app.Book.all.map(book => {
@@ -14,5 +14,5 @@ bookView.initIndexPage = function(){
 
 
 $(document).ready(()=> {
-  Book.fetchAll(bookView.initIndexPage)
+  app.Book.fetchAll(bookView.initIndexPage)
 })
