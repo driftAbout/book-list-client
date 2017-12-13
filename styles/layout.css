@@ -1,15 +1,15 @@
 section{
-  width: 440px;
+  width: 80%;
   margin: 0 auto;
   padding: 20px;
 }
 
-header{
-  width: 480px;
-  margin: 0 auto;
-  background-color: #555;
-}
+@media screen and (min-width: 480px){
 
-img{
-  width: 100%;
+  section{
+    width: 440px;
+    /* margin: 0 auto;
+    padding: 20px; */
+  }
+
 }
