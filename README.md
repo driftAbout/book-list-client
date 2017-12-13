@@ -2,7 +2,7 @@
 # Project Name
 
 **Author**: Kevin Miller & Roger Davenport
-**Version**: 1.0.0
+**Version**: 1.1.0
 
 ## Overview
 This app takes a list of books from our database and populates the page with all book.
@@ -21,7 +21,9 @@ serverside: Javascript, express, node.js, postgress
 12/12 10:00 error handeling
 12/12 10:00 basic HTML and CSS
 12/12 12:00 build book.js and bookView.js
-
+12/13 build new route to handel one books
+12/13 created containers and handelbar template for detail and form view.
+ 
 
 ## Credits and Collaborations
 Kevin Miller
