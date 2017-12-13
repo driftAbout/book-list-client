@@ -2,30 +2,43 @@
 <html>
   <head>
     <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale= 1.0">
     <title>Roger and Kevin: Bookies</title>
     <link rel="stylesheet" href="styles/reset.css">
     <link rel="stylesheet" href="styles/base.css">
     <link rel="stylesheet" href="styles/layout.css">
     <link rel="stylesheet" href="styles/modules.css">
+    <script id="error-template", type="text/x-handlebars-template">
+      <h3></h3>
+      <p>{{status}}: {{statusText}}</p>
+    </script>
     <script id="book-list-template", type="text/x-handlebars-template">
-      <div class='book-view'>
-        <img src="{{image_url}}">
-        <div class="book-footer">
-          <h2>{{title}}<h2>
-          <p>{{author}}</p>
+      <li class="book-items">
+        <div class="book-container">
+          <img src="{{image_url}}">
+            <div class="book-overlay">
+              <h3>{{title}}</h3>
+              <p>{{author}}</p>
+            </div>
         </div>
-      </div>
+      </li>
     </script>
   </head>
   <body>
     <header>
       <h1>Book App</h1>
     </header>
-    <section id="book-list">
+    <section class="book-view container">
+      <ul id="book-list">
+      </ul>
+    </section>
+    <section class="about-view container">
+    </section>
+    <section class="error-view container">
     </section>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.11/handlebars.min.js"></script>
-    <script src="scripts/views/error.js"></script>
+    <script src="scripts/views/errorView.js"></script>
     <script src="scripts/models/book.js"></script>
     <script src="scripts/views/bookView.js"></script>
 

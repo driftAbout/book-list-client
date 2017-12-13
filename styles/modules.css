@@ -1,12 +1,28 @@
-.book {
-  position: relative;
-  width: 100%;
-  margin: 20px auto;
+.book-view {
+  background-color: #fff;
+}
+#book-list {
+  background-color: #dedede;
+  margin: 0 auto;
+}
+.book-items {
+  margin-top: 30px;
+  background: #a2a2a2;
+}
+.book-container {
+    position: relative;
+    text-align: center;
 }
 
-.book-footer {
+.book-container  img{
+  width: 40%;
+  margin: 30px;
+  transform:rotate(-12.5deg);
+}
+.book-overlay {
   width: 100%;
   background-color: #555;
   position: absolute;
   bottom: 0;
+  text-align: left;
 }
