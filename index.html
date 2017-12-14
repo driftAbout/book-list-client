@@ -31,15 +31,16 @@
     <script id="detail-template", type="text/x-handlebars-template">
       <div>
        <h3>{{title}}</h3>
-         <div>
-           <p>{{author}}</p>
-           <p>{{isbn}}</p>
+         <div class="details">
+           <p><span class="pull-left">{{author}}</span><span class="pull-right">{{isbn}}</span></p>
            <img src="{{image_url}}">
            <p id="detail-descritpion">{{description}}</p>
-           <p id="read-more">Read more...<p>
+           <p id="read-more">Read more...</p>
          </div>
+         <span class="admin-btns" >
           <button id="book-delete" class="primary-btn"><a href="/books/update/{{book_id}}">Update</a></button>
           <button id="book-update" class="secondary-btn"><a href="/books/delete/{{book_id}}">Delete</a></button>
+        </span>
       </div>
     </script>
 
