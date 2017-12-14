@@ -29,7 +29,16 @@
     </script>
 
     <script id="detail-template", type="text/x-handlebars-template">
-      <h3>{{title}}<h3>
+      <div>
+       <h3>{{title}}</h3>
+         <div>
+           <p>{{author}}</p>
+           <p>{{isbn}}</p>
+           <img src="{{image_url}}">
+           <p id="detail-descritpion">{{description}}</p>
+           <p id="read-more">Read more...<p>
+         </div>
+      </div>
     </script>
 
     <script id="error-template", type="text/x-handlebars-template">

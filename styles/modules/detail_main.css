@@ -1,0 +1,14 @@
+#read-more{
+  cursor: pointer;
+}
+
+#detail-descritpion {
+  max-height: 140px;
+  overflow: -webkit-paged-y;
+  text-overflow: ellipsis;
+}
+
+
+#detail-descritpion.is-revealed {
+  max-height: 100%;
+}
