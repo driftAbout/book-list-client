@@ -38,6 +38,8 @@
            <p id="detail-descritpion">{{description}}</p>
            <p id="read-more">Read more...<p>
          </div>
+          <button id="book-delete" class="primary-btn" >Update</button>
+          <button id="book-update" class="secondary-btn" >Delete</button>
       </div>
     </script>
 
@@ -54,6 +56,7 @@
         <ul id="menu-list">
           <li><a href="/">View All Books</a></li>
           <li><a href="/books/new">Add A New Book</a></li>
+          <li><a href="/admin">Admin Login</a></li>
         </ul>
       </nav>
     </header>
@@ -86,7 +89,39 @@
           </label>
         </form>
       </section>
+      <section id="update-view" class="container">
+        <form id="update-book-form">
+          <label>
+            <input name="title" type="text" placeholder="Title" required>
+          </label>
+          <label>
+            <input name="author" type="text" placeholder="Author" required>
+          </label>
+          <label>
+            <input name="isbn" type="text" placeholder="isbn" required>
+          </label>
+          <label>
+            <input name="image_url" type="url" placeholder="Image URL" required>
+          </label>
+          <label>
+            <textarea name="description" placeholder="Description" required></textarea>
+          </label>
+          <label>
+            <button id="update-book-submit" class="primary-btn" type="submit">Update Book</button>
+          </label>
+        </form>
+      </section>
       <section id="about-view" class="container">
+      </section>
+      <section id="admin-view" class="container">
+        <form id="admin-form">
+          <label>
+            <input name="token" type="password" placeholder="Enter Pass Phrase" required>
+          </label>
+          <label>
+            <button id="admin-token-submit" class="primary-btn" type="submit">Login</button>
+          </label>
+        </form>
       </section>
       <section id="error-view" class="container">
       </section>
