@@ -65,14 +65,26 @@ var app = app || {};
       .catch(errorCallback)
   }
 
+  Book.delete = function(ctx) {
+    $.ajax({
+      url: `${__API_URL__}/api/v1/books/delete/${ctx.params.id}`,
+      method: 'DELETE'
+    })
+      .then(data => {
+        console.log(data)
+      })
+      .then(() => page('/'))
+  }
+
   Book.update = function(book) {
     $.ajax({
-      url: `${__API_URL__}/api/v1/books/update/${this.article_id}`,
+      url: `${__API_URL__}/api/v1/books/update/${book.book_id}`,
       method: 'PUT',
       data: book
     }).then(data => {
       console.log(data)
     })
+      .then(() => page('/'))
   }
 
   function errorCallback(error) {

@@ -50,12 +50,13 @@ var app = app || {};
 
   bookView.initUpdatePage = function(ctx) {
     resetView();
+    console.log('ctx body inside initupdate',ctx);
     $('#update-view').show();
-    $('#update-book-form input[name="author"]').val(ctx.body.author);
-    $('#update-book-form input[name="title"]').val(ctx.body.title);
-    $('#update-book-form input[name="isbn"]').val(ctx.body.isbn);
-    $('#update-book-form input[name="image_url"]').val(ctx.body.image_url);
-    $('#update-book-form textarea').val(ctx.body.description);
+    $('#update-book-form input[name="author"]').val(ctx.author);
+    $('#update-book-form input[name="title"]').val(ctx.title);
+    $('#update-book-form input[name="isbn"]').val(ctx.isbn);
+    $('#update-book-form input[name="image_url"]').val(ctx.image_url);
+    $('#update-book-form textarea').val(ctx.description);
 
     $('#update-book-form').on('submit', function(event) {
       event.preventDefault();
@@ -65,6 +66,7 @@ var app = app || {};
         isbn: event.target.isbn.value,
         image_url: event.target.image_url.value,
         description: event.target.description.value,
+        book_id: ctx.book_id
       }
       app.Book.update(book);
     })
