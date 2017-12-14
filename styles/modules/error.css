@@ -1,0 +1,12 @@
+
+
+#error-view h3 {
+  font-size: 30px;
+  margin: 20px auto;
+  color: #333;
+}
+
+#error-view p {
+  font-size: 22px;
+  color: #555;
+}

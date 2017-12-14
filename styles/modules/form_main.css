@@ -1,4 +1,4 @@
-#new-book-form {
+/* #new-book-form {
   width: 100%;
 }
 
@@ -20,6 +20,31 @@
 
 #new-book-form textarea {
   height:200px;
+} */
+
+form {
+  width: 100%;
+}
+
+label{
+  display: block;
+  margin-top: 30px;
+}
+
+input, textarea {
+  width: 100%;
+  border-radius: 3px;
+  color:#333;
+}
+
+ input {
+  font-size: 24px;
+  padding: 4px;
+}
+
+ textarea {
+  height:200px;
+  font-size: 18px
 }
 
 
@@ -27,8 +52,17 @@ textarea::-webkit-input-placeholder { /* Chrome/Opera/Safari */
   font-size: 24px;
 }
 
-
-#new-book-submit {
+/* button[type="submit"] {
   font-size: 24px;
   padding: 4px 12px;
+} */
+
+button {
+  font-size: 22px;
+  margin-left: 20px;
 }
+
+/* #new-book-submit {
+  font-size: 24px;
+  padding: 4px 12px;
+} */

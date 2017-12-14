@@ -13,7 +13,7 @@ var app = app || {};
     $('#book-view').show();
     $('#book-list').empty();
 
-    $('nav').on('click', 'li, .icon-menu', function(e){ console.log('e',e); $('#menu-list').slideToggle()} );
+    $('nav').on('click', 'li, .icon-menu', function(){ $('#menu-list').slideToggle()} );
     app.Book.all.map(book => {
       // console.log('book', book);
       $('#book-list').append(book.toHtml())

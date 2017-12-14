@@ -4,14 +4,17 @@ section{
   padding: 20px;
 }
 
-.primary-btn {
-  padding: 4px 12px;
+.primary-btn, .secondary-btn {
+  padding: 6px 12px;
   text-align: center;
   outline: none;
   border-radius: 3px;
-  background-color: #999;
   float: right;
   border: none;
+}
+
+.primary-btn {
+  background-color: #999;
 }
 
 .primary-btn:hover {
@@ -22,6 +25,21 @@ section{
   color: #999;
   background-color: #333;
 }
+
+.secondary-btn {
+  background-color: #333;
+  color: #999;
+}
+
+.secondary-btn:hover {
+  background-color: #EFEFEF;
+}
+
+.secondary-btn:active {
+  color: #999;
+  background-color: #555;
+}
+
 
 @media screen and (min-width: 480px){
 
