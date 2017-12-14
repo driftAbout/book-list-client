@@ -4,12 +4,29 @@ section{
   padding: 20px;
 }
 
+.primary-btn {
+  padding: 4px 12px;
+  text-align: center;
+  outline: none;
+  border-radius: 3px;
+  background-color: #999;
+  float: right;
+  border: none;
+}
+
+.primary-btn:hover {
+  background-color: #EFEFEF;
+}
+
+.primary-btn:active {
+  color: #999;
+  background-color: #333;
+}
+
 @media screen and (min-width: 480px){
 
   section{
     width: 440px;
-    /* margin: 0 auto;
-    padding: 20px; */
   }
 
 }

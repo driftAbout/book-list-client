@@ -25,6 +25,7 @@ var app = app || {};
     resetView();
     $('#detail-view').show();
     $('#detail-view').empty();
+
     let template = Handlebars.compile($('#detail-template').text());
     $('#detail-view').append(template(bookObj));
   }
@@ -44,6 +45,7 @@ var app = app || {};
       }
       app.Book.create(book);
     })
+
 
 
 

@@ -24,8 +24,10 @@ var app = app || {};
 
   Book.loadAll = function(rows){
     rows.sort((a,b) => b.title - a.title);
+
     Book.all = rows.map(book => new Book(book));
     //console.log('loadAll Book.all', Book.all);
+
   };
 
   Book.fetchAll = function (callback){
@@ -41,6 +43,7 @@ var app = app || {};
   Book.fetchOne = function (ctx, callback) {
     $.get(`${__API_URL__}/api/v1/books/${ctx.params.id}`)
       .then(data => {
+        //ctx.book = results[0]
         console.log('data', data);
         ctx.author = data[0].author;
         ctx.title = data[0].title;
@@ -49,6 +52,7 @@ var app = app || {};
         ctx.book_id = data[0].book_id;
         //let this_book = new Book({'author': data[0].author});
       })
+      //.then(callback)
       .then(() => callback(ctx))
       .catch(errorCallback)
   }
