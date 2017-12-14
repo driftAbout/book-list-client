@@ -1,3 +1,7 @@
+#detail-view h3 {
+ margin: 20px auto;
+}
+
 #read-more{
   cursor: pointer;
 }
