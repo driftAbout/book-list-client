@@ -14,27 +14,20 @@ var app = app || {};
 
 
   Book.prototype.toHtml = function() {
-    console.log('this', this);
+    // console.log('this', this);
     let template  = Handlebars.compile($('#book-list-template').text());
     return template(this);
   };
-  // Book.prototype.oneToHtml = function(bookObj) {
-  //   let template = Handlebars.compile($('#detail-template').text());
-  //   return template(bookObj);
-  // };
 
-  Book.oneToHtml = function(bookObj) {
-    let template = Handlebars.compile($('#detail-template').text());
-    return template(bookObj);
-  };
 
   Book.all = [];
 
   Book.loadAll = function(rows){
     rows.sort((a,b) => b.title - a.title);
-    rows.map(row => Book.all.push(new Book(row)));
-    //Book.all = rows.map(row => new Book(row));
-    console.log('loadAll Book.all', Book.all);
+
+    Book.all = rows.map(book => new Book(book));
+    //console.log('loadAll Book.all', Book.all);
+
   };
 
   Book.fetchAll = function (callback){
@@ -61,6 +54,13 @@ var app = app || {};
       })
       //.then(callback)
       .then(() => callback(ctx))
+      .catch(errorCallback)
+  }
+
+  Book.create = function(book) {
+
+    $.post(`${__API_URL__}/api/v1/books/new`,book)
+      .then(console.log('record inserted'))
       .catch(errorCallback)
   }
 
