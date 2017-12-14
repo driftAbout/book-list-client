@@ -40,49 +40,55 @@
   <body>
     <header>
       <h1>Bookie</h1>
+      <nav>
+        <div class="icon-menu"></div>
+        <ul id="menu-list">
+          <li><a href="/">View All Books</a></li>
+          <li><a href="/books/new">Add A New Book</a></li>
+        </ul>
+      </nav>
     </header>
-    <section id="book-view" class="container">
-      <ul id="book-list">
-      </ul>
-    </section>
-    <section id="detail-view" class="container">
-    </section>
-    <section id="form-view" class="container">
-      <form id="new-book-form">
-        <label>
-          <input name="title" type="text" placeholder="Title" required>
-        </label>
-        <label>
-          <input name="author" type="text" placeholder="Author" required>
-        </label>
-        <label>
-          <input name="isbn" type="text" placeholder="isbn" required>
-        </label>
-        <label>
-          <input name="image_url" type="url" placeholder="Image URL" required>
-        </label>
-        <label>
+    <main>
+      <section id="book-view" class="container">
+        <ul id="book-list">
+        </ul>
+      </section>
+      <section id="detail-view" class="container">
+      </section>
+      <section id="form-view" class="container">
+        <form id="new-book-form">
+          <label>
+            <input name="title" type="text" placeholder="Title" required>
+          </label>
+          <label>
+            <input name="author" type="text" placeholder="Author" required>
+          </label>
+          <label>
+            <input name="isbn" type="text" placeholder="isbn" required>
+          </label>
+          <label>
+            <input name="image_url" type="url" placeholder="Image URL" required>
+          </label>
+         <label>
           <textarea name="description" placeholder="Description" required></textarea>
         </label>
-        <label>
-          <button id="new-book-submit" class="primary-btn" type='submit'>Submit</button>
-        </label>
-
-
-      </form>
-    </section>
-    <section id="about-view" class="container">
-    </section>
-    <section id="error-view" class="container">
-    </section>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.11/handlebars.min.js"></script>
-    <script src="https://cdn.rawgit.com/visionmedia/page.js/master/page.js"></script>
-    <script src="scripts/views/errorView.js"></script>
-    <script src="scripts/models/book.js"></script>
-    <script src="scripts/views/bookView.js"></script>
-    <script src="scripts/views/routes.js"></script>
-
+          <label>
+            <button id="new-book-submit" class="primary-btn" type='submit'>Submit</button>
+          </label>
+        </form>
+      </section>
+      <section id="about-view" class="container">
+      </section>
+      <section id="error-view" class="container">
+      </section>
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.11/handlebars.min.js"></script>
+      <script src="https://cdn.rawgit.com/visionmedia/page.js/master/page.js"></script>
+      <script src="scripts/views/errorView.js"></script>
+      <script src="scripts/models/book.js"></script>
+      <script src="scripts/views/bookView.js"></script>
+      <script src="scripts/views/routes.js"></script>
+    </main>
   </body>
 
 </html>
