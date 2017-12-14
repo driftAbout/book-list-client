@@ -31,9 +31,9 @@ var app = app || {};
   }
 
   bookView.initFormPage = function() {
-    resevView();
-    $('.create-view').show();
-    $('#create-form').on('sumbit', function(event) {
+    resetView();
+    $('#form-view').show();
+    $('#new-book-form').on('sumbit', function(event) {
       event.preventDefault();
 
       let book = {
