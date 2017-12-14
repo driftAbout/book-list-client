@@ -1,0 +1,34 @@
+#new-book-form {
+  width: 100%;
+}
+
+#new-book-form label{
+  display: block;
+  margin-top: 30px;
+}
+
+#new-book-form input, #new-book-form textarea {
+  width: 100%;
+  border-radius: 3px;
+  color:#333;
+}
+
+#new-book-form input {
+  font-size: 24px;
+  padding: 4px;
+}
+
+#new-book-form textarea {
+  height:200px;
+}
+
+
+textarea::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+  font-size: 24px;
+}
+
+
+#new-book-submit {
+  font-size: 24px;
+  padding: 4px 12px;
+}

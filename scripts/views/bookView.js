@@ -33,6 +33,8 @@ var app = app || {};
     $('#detail-view').empty();
     // $('#detail-view').append(app.Book.oneToHtml(bookObj));
     $('#detail-view').append(bookView.oneToHtml(bookObj));
+    //let template = Handlebars.compile($('#detail-template').text());
+    //template(book_ctx)
   }
 
   $(document).ready(()=> {
