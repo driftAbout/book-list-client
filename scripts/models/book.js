@@ -47,6 +47,7 @@ var app = app || {};
         console.log('data', data);
         ctx.author = data[0].author;
         ctx.title = data[0].title;
+        ctx.isbn = data[0].isbn;
         ctx.description = data[0].description;
         ctx.image_url = data[0].image_url;
         ctx.book_id = data[0].book_id;

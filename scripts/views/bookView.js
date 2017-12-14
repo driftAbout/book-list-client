@@ -14,7 +14,6 @@ var app = app || {};
     $('#book-list').empty();
 
     $('nav').on('click', 'li, .icon-menu', function(e){ console.log('e',e); $('#menu-list').slideToggle()} );
-
     app.Book.all.map(book => {
       // console.log('book', book);
       $('#book-list').append(book.toHtml())
@@ -30,6 +29,7 @@ var app = app || {};
 
     let template = Handlebars.compile($('#detail-template').text());
     $('#detail-view').append(template(bookObj));
+    $('#read-more').on('click', function(){$('#detail-descritpion').toggleClass('is-revealed')});
   }
 
   bookView.initFormPage = function() {
@@ -44,7 +44,6 @@ var app = app || {};
         image_url: event.target.image_url.value,
         description: event.target.description.value,
       }
-      page('/');
       app.Book.create(book);
     })
   }
