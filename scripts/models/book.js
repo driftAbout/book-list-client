@@ -44,7 +44,7 @@ var app = app || {};
     $.get(`${__API_URL__}/api/v1/books/${ctx.params.id}`)
       .then(data => {
         //ctx.book = results[0]
-        console.log('data', data);
+        // console.log('data', data);
         ctx.author = data[0].author;
         ctx.title = data[0].title;
         ctx.isbn = data[0].isbn;
@@ -63,6 +63,16 @@ var app = app || {};
     $.post(`${__API_URL__}/api/v1/books/new`,book)
       .then(console.log('record inserted'))
       .catch(errorCallback)
+  }
+
+  Book.update = function(book) {
+    $.ajax({
+      url: `${__API_URL__}/api/v1/books/update/${this.article_id}`,
+      method: 'PUT',
+      data: book
+    }).then(data => {
+      console.log(data)
+    })
   }
 
   function errorCallback(error) {
