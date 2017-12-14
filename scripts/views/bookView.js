@@ -3,36 +3,50 @@ var app = app || {};
 (function (module){
   let bookView = {};
 
+  function resetView() {
+    $('.container').hide();
+  }
 
   bookView.initIndexPage = function() {
-    console.log('book.all',app.Book.all);
-    $('.container').hide();
+    //console.log('book.all',app.Book.all);
+    resetView();
     $('#book-view').show();
     $('#book-list').empty();
 
     app.Book.all.map(book => {
-      console.log('book', book);
+      // console.log('book', book);
       $('#book-list').append(book.toHtml())
     });
   };
 
-  bookView.oneToHtml = function(book_ctx) {
-    console.log('callback:', book_ctx);
-    console.log('title:', book_ctx.title);
-    let template = Handlebars.compile($('#detail-template').text());
-    //let x = {'title': bookObj.title}
-    //console.log('x', x);
-    //$('#detail-view').append(template(bookObj));
-    return template(book_ctx);
-  };
+
 
   bookView.initDetailPage = function(bookObj) {
-
-    $('.container').hide();
+    resetView();
     $('#detail-view').show();
     $('#detail-view').empty();
-    // $('#detail-view').append(app.Book.oneToHtml(bookObj));
-    $('#detail-view').append(bookView.oneToHtml(bookObj));
+    let template = Handlebars.compile($('#detail-template').text());
+    $('#detail-view').append(template(bookObj));
+  }
+
+  bookView.initFormPage = function() {
+    resevView();
+    $('.create-view').show();
+    $('#create-form').on('sumbit', function(event) {
+      event.preventDefault();
+
+      let book = {
+        title: event.target.title.value,
+        author: event.target.author.value,
+        isbn: event.target.isbn.value,
+        image_url: event.target.image_url.value,
+        description: event.target.description.value
+      }
+      app.Book.create(book);
+    })
+
+
+
   }
 
   $(document).ready(()=> {
