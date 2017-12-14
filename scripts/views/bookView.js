@@ -13,6 +13,8 @@ var app = app || {};
     $('#book-view').show();
     $('#book-list').empty();
 
+    $('nav').on('click', 'li, .icon-menu', function(e){ console.log('e',e); $('#menu-list').slideToggle()} );
+
     app.Book.all.map(book => {
       // console.log('book', book);
       $('#book-list').append(book.toHtml())
@@ -33,27 +35,23 @@ var app = app || {};
   bookView.initFormPage = function() {
     resetView();
     $('#form-view').show();
-    $('#new-book-form').on('sumbit', function(event) {
+    $('#new-book-form').on('submit', function(event) {
       event.preventDefault();
-
       let book = {
         title: event.target.title.value,
         author: event.target.author.value,
         isbn: event.target.isbn.value,
         image_url: event.target.image_url.value,
-        description: event.target.description.value
+        description: event.target.description.value,
       }
+      page('/');
       app.Book.create(book);
     })
-
-
-
-
   }
 
-  $(document).ready(()=> {
-    app.Book.fetchAll(bookView.initIndexPage)
-  })
+  // $(document).ready(()=> {
+  //   app.Book.fetchAll(bookView.initIndexPage)
+  // })
 
   module.bookView = bookView;
 
