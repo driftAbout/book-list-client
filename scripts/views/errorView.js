@@ -4,11 +4,12 @@ var app = app || {};
   let errorView = {};
 
   errorView.initErrorPage = function(err) {
+    console.log('in errorView');
     $('.container').hide();
-    $('.error-view').show();
-    $('#error-message').empty();
+    $('#error-view').show();
+    $('#error-view').empty();
     var template = Handlebars.compile($('#error-template').text());
-    $('#error-message').append(template);
+    $('#error-view').append(template(err));
 
   };
 

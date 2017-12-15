@@ -17,13 +17,20 @@ var app = app || {};
     $('#admin-form').on('submit', function(event) {
       event.preventDefault();
       let token = $('#admin-form input[name="token"]').val();
-      $.get(`${__API_URL__}/api/v1/books/${token}`)
-        .then(() => {
-          $('.admin-btns').addClass('visible');
+      $.get(`${__API_URL__}/api/v1/books/admin/${token}`)
+        .then(data => {
+          console.log('data from server check', data);
+          if (data === '1') {
+            localStorage.admin = '1';
+            page('/')
+
+          }
+          if (data === '0') {
+            app.errorView.initErrorPage({status: 'invalid', statusText: 'Incorrect Pass Code'});
+          }
         })
-        .then(() => page('/'))
         .catch(() => {
-          prompt('not correct')
+
         })
     })
   }
