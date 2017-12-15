@@ -12,7 +12,6 @@ var app = app || {};
     resetView();
     $('#book-view').show();
     $('#book-list').empty();
-
     $('nav').on('click', 'li, .icon-menu', function(){ $('#menu-list').slideToggle()} );
     app.Book.all.map(book => {
       // console.log('book', book);
@@ -48,6 +47,7 @@ var app = app || {};
         description: event.target.description.value,
       }
       app.Book.create(book);
+      page('/');
     })
   }
 
