@@ -75,6 +75,29 @@ var app = app || {};
     })
   }
 
+  bookView.initSearchFormPage = function(callback) {
+    resetView();
+    $('#search-form').show();
+    $('#search-form').on('submit', function(event) {
+      event.preventDefault();
+      let bookSearch = {
+        title: event.target.author.value,
+        author: event.target.author.value,
+        isbn: event.target.author.value,
+      }
+      app.Book.find(bookSearch, callback);
+    })
+  }
+  bookView.initSearchResultsPage = function() {
+    resetView();
+    $('#search-results-view').show();
+    app.Book.all.map(book => {
+      $('#search-result-list').append(book.toHtml())
+    });
+  }
+
+
+
 
   // $(document).ready(()=> {
   //   app.Book.fetchAll(bookView.initIndexPage)
