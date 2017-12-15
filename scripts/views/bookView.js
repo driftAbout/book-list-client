@@ -24,12 +24,15 @@ var app = app || {};
 
   bookView.initDetailPage = function(bookObj) {
     resetView();
-    $('#detail-view').show();
     $('#detail-view').empty();
 
     let template = Handlebars.compile($('#detail-template').text());
     $('#detail-view').append(template(bookObj));
     $('#read-more').on('click', function(){$('#detail-descritpion').toggleClass('is-revealed')});
+    if (localStorage.admin) {
+      $('.admin-btns').addClass('is-visible');
+    }
+    $('#detail-view').show();
   }
 
   bookView.initFormPage = function() {
