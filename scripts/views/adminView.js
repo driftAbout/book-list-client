@@ -3,8 +3,8 @@
 var app = app || {};
 (function (module){
   let adminView = {};
-  let __API_URL__ = 'http://localhost:3000'; //dev
-  //let __API_URL__ = 'https://rd-km-booklist.herokuapp.com'; //production
+  //let __API_URL__ = 'http://localhost:3000'; //dev
+  let __API_URL__ = 'https://rd-km-booklist.herokuapp.com'; //production
   function resetView() {
     $('.container').hide();
   }
