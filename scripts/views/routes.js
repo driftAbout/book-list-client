@@ -1,7 +1,7 @@
 'use strict'
 
-page.base('/book-list-client');
-
+//page.base('/book-list-client');
+//page.base('.');
 
 page('/', app.Book.fetchAll(app.bookView.initIndexPage));
 page('/books/new', ctx => app.bookView.initFormPage(ctx));

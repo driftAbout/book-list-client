@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <!-- <base href="."> -->
+    <!-- <base href="/book-list-client"> -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale= 1.0">
     <title>Roger and Kevin: Bookies</title>
@@ -22,7 +24,8 @@
             <div class="book-overlay">
               <h3>{{title}}</h3>
               <p>{{author}}</p>
-              <button class="book-detail-btn primary-btn"><a href="/book-list-client/books/{{book_id}}">View Detail</a></button>
+              <!-- <button class="book-detail-btn primary-btn"><a href="/book-list-client/books/{{book_id}}">View Detail</a></button> -->
+              <button class="book-detail-btn primary-btn"><a href="/books/{{book_id}}">View Detail</a></button>
             </div>
         </div>
       </li>
@@ -38,8 +41,10 @@
            <p id="read-more">Read more...</p>
          </div>
          <span class="admin-btns" >
-          <button id="book-delete" class="primary-btn"><a href="/book-list-client/books/update/{{book_id}}">Update</a></button>
-          <button id="book-update" class="secondary-btn"><a href="/book-list-client/books/delete/{{book_id}}">Delete</a></button>
+          <!-- <button id="book-delete" class="primary-btn"><a href="/book-list-client/books/update/{{book_id}}">Update</a></button>
+          <button id="book-update" class="secondary-btn"><a href="/book-list-client/books/delete/{{book_id}}">Delete</a></button> -->
+          <button id="book-delete" class="primary-btn"><a href="/books/update/{{book_id}}">Update</a></button>
+          <button id="book-update" class="secondary-btn"><a href="/books/delete/{{book_id}}">Delete</a></button>
         </span>
       </div>
     </script>
@@ -55,9 +60,12 @@
       <nav>
         <div class="icon-menu"></div>
         <ul id="menu-list">
-          <li><a href="/book-list-client/">View All Books</a></li>
+          <!-- <li><a href="/book-list-client/">View All Books</a></li>
           <li><a href="/book-list-client/books/new">Add A New Book</a></li>
-          <li><a href="/book-list-client/admin">Admin Login</a></li>
+          <li><a href="/book-list-client/admin">Admin Login</a></li> -->
+          <li><a href="/">View All Books</a></li>
+          <li><a href="/books/new">Add A New Book</a></li>
+          <li><a href="/admin">Admin Login</a></li>
         </ul>
       </nav>
     </header>
@@ -109,6 +117,29 @@
           </label>
           <label>
             <button id="update-book-submit" class="primary-btn" type="submit">Update Book</button>
+          </label>
+        </form>
+      </section>
+      <section id="search-results-view" class="container">
+        <ul id="search-results-list">
+        </ul>
+      </section>
+      <section id="search-view" class="container">
+        <h3>Book Search</h3>
+        <form id="search-form">
+          <label>
+            <input name="title" type="text" placeholder="Search by title" required>
+          </label>
+          <label><span>- AND / OR -</span></label>
+          <label>
+            <input name="author" type="text" placeholder="Search by author" required>
+          </label>
+          <label><span>- OR -</span></label>
+          <label>
+            <input name="isbn" type="text" placeholder="Search by isbn" required>
+          </label>
+          <label>
+            <button id="search-submit" class="primary-btn" type="submit">Search</button>
           </label>
         </form>
       </section>
