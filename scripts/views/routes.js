@@ -9,5 +9,5 @@ page('/books/delete/:id', ctx => app.Book.delete(ctx));
 page('/admin', app.adminView.initAdminViewPage);
 page('/books/:id', ctx => app.Book.fetchOne(ctx, app.bookView.initDetailPage));
 page('/books/update/:id', ctx => app.Book.fetchOne(ctx, app.bookView.initUpdatePage));
-page('books/search', app.bookView.initSearchFormPage(app.bookView.initSearchResultsPage));
+page('/books/search', app.bookView.initSearchFormPage(app.bookView.initSearchResultsPage));
 page();
