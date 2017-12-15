@@ -64,6 +64,16 @@ var app = app || {};
       .then(console.log('record inserted'))
       .catch(errorCallback)
   }
+  //searches Google Books api for matches
+  Book.find = function(book, callback) {
+
+    $.get(`/api/v1/books/find`,book)
+      .then(data => {
+        Book.loadAll(data);
+      })
+      .then(callback)
+      .catch(errorCallback())
+  }
 
   Book.delete = function(ctx) {
     $.ajax({
