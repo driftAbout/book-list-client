@@ -3,8 +3,8 @@
 var app = app || {};
 
 (function(module) {
-  let __API_URL__ = 'http://localhost:3000'; //dev
-  //let __API_URL__ = 'https://rd-km-booklist.herokuapp.com'; //production
+  //let __API_URL__ = 'http://localhost:3000'; //dev
+  let __API_URL__ = 'https://rd-km-booklist.herokuapp.com'; //production
 
   function Book(dataObj){
     Object.keys(dataObj).forEach(key => {
