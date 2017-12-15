@@ -1,7 +1,7 @@
 'use strict'
-if(window.location.pathname !== '/') {
-  page.base('/book-list-client');
-}
+
+page.base('/book-list-client');
+
 
 page('/', app.Book.fetchAll(app.bookView.initIndexPage));
 page('/books/new', ctx => app.bookView.initFormPage(ctx));
