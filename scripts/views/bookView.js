@@ -5,7 +5,9 @@ var app = app || {};
 
   function resetView() {
     $('.container').hide();
+
   }
+  
 
   bookView.initIndexPage = function() {
     resetView();
@@ -51,7 +53,6 @@ var app = app || {};
 
   bookView.initUpdatePage = function(ctx) {
     resetView();
-    console.log('ctx body inside initupdate',ctx);
     $('#update-view').show();
     $('#update-book-form input[name="author"]').val(ctx.author);
     $('#update-book-form input[name="title"]').val(ctx.title);
@@ -87,8 +88,8 @@ var app = app || {};
     })
   }
   bookView.initSearchResultsPage = function() {
-    console.log('bookView.initSearchResultsPage')
     resetView();
+    $('#search-results-list').empty();
     $('#search-results-view').show();
     app.Book.all.map((book, i) => {
       book.book_id = i;

@@ -37,11 +37,9 @@ var app = app || {};
   };
 
   Book.fetchOne = function (ctx, callback) {
-      console.log('ctx', ctx);
+    console.log('ctx', ctx);
     $.get(`${__API_URL__}/api/v1/books/${ctx.params.id}`)
       .then(data => {
-        //ctx.book = results[0]
-        // console.log('data', data);
         ctx.author = data[0].author;
         ctx.title = data[0].title;
         ctx.isbn = data[0].isbn;
@@ -53,6 +51,11 @@ var app = app || {};
       //.then(callback)
       .then(() => callback(ctx))
       .catch(errorCallback)
+  }
+  Book.insertFromSearch = function(book) {
+    console.log('inside insert from search',book);
+    Book.create(Book.all[book.params.id]);
+    page('/');
   }
 
   Book.create = function(book) {
