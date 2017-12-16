@@ -24,7 +24,6 @@
             <div class="book-overlay">
               <h3>{{title}}</h3>
               <p>{{author}}</p>
-              <!-- <button class="book-detail-btn primary-btn"><a href="/book-list-client/books/{{book_id}}">View Detail</a></button> -->
             <button class="results-detail-btn primary-btn"><a href="/search-results/{{book_id}}">View Detail</a></button>
               <button class="book-detail-btn primary-btn"><a href="/books/{{book_id}}">View Detail</a></button>
             </div>
@@ -33,7 +32,7 @@
     </script>
 
     <script id="detail-template", type="text/x-handlebars-template">
-      <div>
+      <div {{{search_class}}}>
        <h3>{{title}}</h3>
          <div class="details">
            <p><span class="pull-left">{{author}}</span><span class="pull-right">{{isbn}}</span></p>
@@ -41,9 +40,8 @@
            <p id="detail-descritpion">{{description}}</p>
            <p id="read-more">Read more...</p>
          </div>
+         <button class="book-add primary-btn"><a href="/books/add/{{book_id}}">Add Book</a></button>
          <span class="admin-btns" >
-          <!-- <button id="book-delete" class="primary-btn"><a href="/book-list-client/books/update/{{book_id}}">Update</a></button>
-          <button id="book-update" class="secondary-btn"><a href="/book-list-client/books/delete/{{book_id}}">Delete</a></button> -->
           <button id="book-delete" class="primary-btn"><a href="/books/update/{{book_id}}">Update</a></button>
           <button id="book-update" class="secondary-btn"><a href="/books/delete/{{book_id}}">Delete</a></button>
         </span>
@@ -61,9 +59,6 @@
       <nav>
         <div class="icon-menu"></div>
         <ul id="menu-list">
-          <!-- <li><a href="/book-list-client/">View All Books</a></li>
-          <li><a href="/book-list-client/books/new">Add A New Book</a></li>
-          <li><a href="/book-list-client/admin">Admin Login</a></li> -->
           <li><a href="/">View All Books</a></li>
           <li><a href="/books/new">Add A New Book</a></li>
           <li><a href="/search">Search</a></li>
@@ -168,7 +163,12 @@
       <script src="scripts/views/adminView.js"></script>
       <script src="scripts/views/routes.js"></script>
     </main>
-    <footer></footer>
+    <footer>
+      <ul>
+        <li><span class="icon-glass" ></span></li>
+        <li><span class="icon-github" ></span></li>  
+      </ul>
+    </footer>
   </body>
 
 </html>

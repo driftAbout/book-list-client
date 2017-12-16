@@ -2,6 +2,11 @@ section{
   width: 80%;
   margin: 0 auto;
   padding: 20px;
+  padding-bottom: 60px;
+}
+
+main {
+    min-height: 70vh;
 }
 
 .primary-btn, .secondary-btn {
@@ -40,15 +45,6 @@ section{
   background-color: #555;
 }
 
-
-@media screen and (min-width: 480px){
-
-  section{
-    width: 440px;
-  }
-
-}
-
 .pull-left {
   float: left;
 }
@@ -56,4 +52,19 @@ section{
 .pull-right {
   float: right;
 }
-ß
+
+
+@media screen and (min-width: 480px){
+
+  section{
+    width: 440px;
+  }
+
+  main {
+    width: 478px;
+    margin: 0 auto;
+    border-left: 1px solid #777;
+    border-right: 1px solid #777;
+  }
+
+}

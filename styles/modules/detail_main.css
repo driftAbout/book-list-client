@@ -1,3 +1,7 @@
+#detail-view {
+  /* margin-bottom: 70px; */
+}
+
 #detail-view h3 {
  margin: 20px auto;
 }
@@ -18,6 +22,9 @@
 
 #read-more{
   cursor: pointer;
+  text-align: right;
+  color: #888;
+  margin-bottom: 30px;
 }
 
 #detail-descritpion {
@@ -39,4 +46,12 @@
 
 .admin-btns.is-visible {
   display: inline;
+}
+
+.search-detail-view .admin-btns.is-visible {
+  display: none;
+}
+
+.search-detail-view .book-add {
+  display: inline-block;
 }

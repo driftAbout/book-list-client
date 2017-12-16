@@ -14,9 +14,13 @@ h1 {
   font-size: 36px;
 }
 
+h1 .icon-glass {
+  font-size: 30px;
+}
+
 nav {
-width: 100%;
-padding-top:14px;
+  width: 100%;
+  padding-top:14px;
 }
 
 .icon-menu {
