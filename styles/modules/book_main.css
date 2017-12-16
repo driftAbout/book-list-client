@@ -47,9 +47,10 @@
   font-size: 18px;
 }
 
-.book-detail-btn {
+.book-detail-btn,.results-detail-btn  {
   margin-right: 20px;
   font-size: 18px;
+  display: none;
 }
 
 .book-detail-btn a {

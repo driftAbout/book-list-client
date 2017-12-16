@@ -17,6 +17,7 @@ var app = app || {};
       // console.log('book', book);
       $('#book-list').append(book.toHtml())
     });
+    $('.book-detail-btn').show();
   };
 
 
@@ -31,6 +32,7 @@ var app = app || {};
     if (localStorage.admin) {
       $('.admin-btns').addClass('is-visible');
     }
+
     $('#detail-view').show();
   }
 
@@ -77,23 +79,29 @@ var app = app || {};
 
   bookView.initSearchFormPage = function(callback) {
     resetView();
-    $('#search-form').show();
+    $('#search-view').show();
     $('#search-form').on('submit', function(event) {
       event.preventDefault();
       let bookSearch = {
-        title: event.target.author.value,
+        title: event.target.title.value,
         author: event.target.author.value,
-        isbn: event.target.author.value,
+        isbn: event.target.isbn.value,
       }
       app.Book.find(bookSearch, callback);
     })
   }
   bookView.initSearchResultsPage = function() {
+    console.log('bookView.initSearchResultsPage')
     resetView();
     $('#search-results-view').show();
-    app.Book.all.map(book => {
-      $('#search-result-list').append(book.toHtml())
+    // app.Book.all.map(book => {
+    //   $('#search-results-list').append(book.toHtml());
+    // });
+    app.Book.all.map((book, i) => {
+      book.book_id = i;
+      $('#search-results-list').append(book.toHtml());
     });
+    $('.results-detail-btn').show();
   }
 
 
