@@ -1,6 +1,11 @@
 'use strict';
 
-// page.base('/book-list-client');
+
+$('a').on('click', function(){
+  $(this).attr(`/book-list-client${$(this).attr('href')}`);
+})
+
+page.base('/book-list-client');
 // page.base('.');
 // if(window.location.pathname !== '/') {
 //   page.base('/book-list-client');
