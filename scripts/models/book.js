@@ -40,8 +40,6 @@ var app = app || {};
     console.log('ctx', ctx);
     $.get(`${__API_URL__}/api/v1/books/${ctx.params.id}`)
       .then(data => {
-        //ctx.book = results[0]
-        // console.log('data', data);
         ctx.author = data[0].author;
         ctx.title = data[0].title;
         ctx.isbn = data[0].isbn;
