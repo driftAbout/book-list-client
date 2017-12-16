@@ -1,7 +1,7 @@
 'use strict';
 
 page.base('/book-list-client');
-// page.base('.');
+page.base('.');
 // if(window.location.pathname !== '/') {
 //   page.base('/book-list-client');
 // }
