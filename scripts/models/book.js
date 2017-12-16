@@ -41,6 +41,7 @@ var app = app || {};
   };
 
   Book.fetchOne = function (ctx, callback) {
+      console.log('ctx', ctx);
     $.get(`${__API_URL__}/api/v1/books/${ctx.params.id}`)
       .then(data => {
         //ctx.book = results[0]
@@ -66,13 +67,15 @@ var app = app || {};
   }
   //searches Google Books api for matches
   Book.find = function(book, callback) {
+    console.log('book', book)
 
-    $.get(`/api/v1/books/find`,book)
+    $.get(`${__API_URL__}/api/v1/books/find`,book)
       .then(data => {
+        console.log('find data', data)
         Book.loadAll(data);
       })
       .then(callback)
-      .catch(errorCallback())
+      .catch(errorCallback)
   }
 
   Book.delete = function(ctx) {

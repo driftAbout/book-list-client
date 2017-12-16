@@ -25,6 +25,7 @@
               <h3>{{title}}</h3>
               <p>{{author}}</p>
               <!-- <button class="book-detail-btn primary-btn"><a href="/book-list-client/books/{{book_id}}">View Detail</a></button> -->
+            <button class="results-detail-btn primary-btn"><a href="/search-results/{{book_id}}">View Detail</a></button>
               <button class="book-detail-btn primary-btn"><a href="/books/{{book_id}}">View Detail</a></button>
             </div>
         </div>
@@ -65,7 +66,7 @@
           <li><a href="/book-list-client/admin">Admin Login</a></li> -->
           <li><a href="/">View All Books</a></li>
           <li><a href="/books/new">Add A New Book</a></li>
-          <li><a href="/books/search">Search</a></li>
+          <li><a href="/search">Search</a></li>
           <li><a href="/admin">Admin Login</a></li>
         </ul>
       </nav>
@@ -129,15 +130,15 @@
         <h3>Book Search</h3>
         <form id="search-form">
           <label>
-            <input name="title" type="text" placeholder="Search by title" required>
+            <input name="title" type="text" placeholder="Search by title">
           </label>
           <label><span>- AND / OR -</span></label>
           <label>
-            <input name="author" type="text" placeholder="Search by author" required>
+            <input name="author" type="text" placeholder="Search by author">
           </label>
           <label><span>- OR -</span></label>
           <label>
-            <input name="isbn" type="text" placeholder="Search by isbn" required>
+            <input name="isbn" type="text" placeholder="Search by isbn">
           </label>
           <label>
             <button id="search-submit" class="primary-btn" type="submit">Search</button>
