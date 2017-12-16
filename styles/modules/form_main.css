@@ -24,7 +24,7 @@
 
 form {
   width: 100%;
-  margin-bottom: 70px;
+    /* margin-bottom: 70px; */
 }
 
 label{
@@ -33,14 +33,15 @@ label{
 }
 
 input, textarea {
-  width: 100%;
+  width: 99%;
   border-radius: 3px;
   color:#333;
 }
 
  input {
   font-size: 24px;
-  padding: 4px;
+  padding: 4px 0;
+  text-indent: 5px;
 }
 
  textarea {

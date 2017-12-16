@@ -14,7 +14,6 @@ var app = app || {};
 
 
   Book.prototype.toHtml = function() {
-    // console.log('this', this);
     let template  = Handlebars.compile($('#book-list-template').text());
     return template(this);
   };
@@ -24,10 +23,7 @@ var app = app || {};
 
   Book.loadAll = function(rows){
     rows.sort((a,b) => b.title - a.title);
-
     Book.all = rows.map(book => new Book(book));
-    //console.log('loadAll Book.all', Book.all);
-
   };
 
   Book.fetchAll = function (callback){

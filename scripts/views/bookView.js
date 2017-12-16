@@ -8,19 +8,15 @@ var app = app || {};
   }
 
   bookView.initIndexPage = function() {
-    //console.log('book.all',app.Book.all);
     resetView();
     $('#book-view').show();
     $('#book-list').empty();
     $('nav').on('click', 'li, .icon-menu', function(){ $('#menu-list').slideToggle()} );
     app.Book.all.map(book => {
-      // console.log('book', book);
       $('#book-list').append(book.toHtml())
     });
     $('.book-detail-btn').show();
   };
-
-
 
   bookView.initDetailPage = function(bookObj) {
     resetView();
@@ -94,22 +90,13 @@ var app = app || {};
     console.log('bookView.initSearchResultsPage')
     resetView();
     $('#search-results-view').show();
-    // app.Book.all.map(book => {
-    //   $('#search-results-list').append(book.toHtml());
-    // });
     app.Book.all.map((book, i) => {
       book.book_id = i;
+      book.search_class = 'class="search-detail-view"';
       $('#search-results-list').append(book.toHtml());
     });
     $('.results-detail-btn').show();
   }
-
-
-
-
-  // $(document).ready(()=> {
-  //   app.Book.fetchAll(bookView.initIndexPage)
-  // })
 
   module.bookView = bookView;
 

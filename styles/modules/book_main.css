@@ -47,7 +47,7 @@
   font-size: 18px;
 }
 
-.book-detail-btn,.results-detail-btn  {
+.book-detail-btn, .results-detail-btn, .book-add  {
   margin-right: 20px;
   font-size: 18px;
   display: none;
