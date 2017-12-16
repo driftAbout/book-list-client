@@ -2,6 +2,7 @@
 
 
 $('a').on('click', function(){
+  console.log('clicked', $(this).attr('href'))
   $(this).attr(`/book-list-client${$(this).attr('href')}`);
 })
 
