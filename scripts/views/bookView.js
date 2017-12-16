@@ -89,6 +89,7 @@ var app = app || {};
   bookView.initSearchResultsPage = function() {
     console.log('bookView.initSearchResultsPage')
     resetView();
+    $('#search-results-list').empty();
     $('#search-results-view').show();
     app.Book.all.map((book, i) => {
       book.book_id = i;
