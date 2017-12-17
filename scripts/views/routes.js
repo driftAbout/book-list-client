@@ -30,6 +30,6 @@ page('/search-results/:id', ctx => app.bookView.initDetailPage(app.Book.all[ctx.
 
 page('/', (ctx) => {
   console.log(ctx);
-  app.Book.fetchAll(app.bookView.initIndexPage)
+  if (!ctx.init) app.Book.fetchAll(app.bookView.initIndexPage);
 });
 page();
