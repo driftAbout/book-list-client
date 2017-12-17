@@ -8,7 +8,9 @@ var baseURL = '/book-list-client';
 $(function() {
   //append the baseURL to <a>
   $('body').on('click', 'a', function() {
-    $(this).attr('href',`${baseURL}${$(this).attr('href')}`);
+    if (! $(this).attr('href').startsWith(baseURL) ){
+      $(this).attr('href',`${baseURL}${$(this).attr('href')}`);
+    }
   })
 });
 //append the baseURL to the routes
