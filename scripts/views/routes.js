@@ -1,10 +1,11 @@
 'use strict';
 
 
-$('a').on('click', function(){
-  console.log('clicked', $(this).attr('href'))
-  $(this).attr(`/book-list-client${$(this).attr('href')}`);
-})
+$(function(){
+  $('a').on('click', function(){
+    console.log('clicked', $(this).attr('href'))
+    $(this).attr(`/book-list-client${$(this).attr('href')}`);
+  })});
 
 page.base('/book-list-client');
 // page.base('.');
