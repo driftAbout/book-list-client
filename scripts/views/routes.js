@@ -18,7 +18,7 @@ page.base(baseURL);
 
 ///****************************///
 
-page('/', app.Book.fetchAll(app.bookView.initIndexPage));
+page('/', () => app.Book.fetchAll(app.bookView.initIndexPage));
 page('/books/new', ctx => app.bookView.initFormPage(ctx));
 page('/admin', app.adminView.initAdminViewPage);
 page('/search', () => app.bookView.initSearchFormPage(app.bookView.initSearchResultsPage));
