@@ -16,6 +16,7 @@ page.base(baseURL);
 
 ///****************************///
 
+page({popstate: true});
 
 page('/', app.Book.fetchAll(app.bookView.initIndexPage));
 page('/books/new', ctx => app.bookView.initFormPage(ctx));
