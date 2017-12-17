@@ -37,7 +37,7 @@ var app = app || {};
   };
 
   Book.fetchOne = function (ctx, callback) {
-    console.log('ctx', ctx);
+    //console.log('ctx', ctx);
     $.get(`${__API_URL__}/api/v1/books/${ctx.params.id}`)
       .then(data => {
         ctx.author = data[0].author;
@@ -53,7 +53,7 @@ var app = app || {};
       .catch(errorCallback)
   }
   Book.insertFromSearch = function(book) {
-    console.log('inside insert from search',book);
+    //console.log('inside insert from search',book);
     Book.create(Book.all[book.params.id]);
     page('/');
   }
@@ -61,16 +61,16 @@ var app = app || {};
   Book.create = function(book) {
 
     $.post(`${__API_URL__}/api/v1/books/new`,book)
-      .then(console.log('record inserted'))
+      // .then(console.log('record inserted'))
       .catch(errorCallback)
   }
   //searches Google Books api for matches
   Book.find = function(book, callback) {
-    console.log('book', book)
+    //console.log('book', book)
 
     $.get(`${__API_URL__}/api/v1/books/find`,book)
       .then(data => {
-        console.log('find data', data)
+      //  console.log('find data', data)
         Book.loadAll(data);
       })
       .then(callback)
@@ -82,9 +82,9 @@ var app = app || {};
       url: `${__API_URL__}/api/v1/books/delete/${ctx.params.id}`,
       method: 'DELETE'
     })
-      .then(data => {
-        console.log(data)
-      })
+      // .then(data => {
+      //   console.log(data)
+      // })
       .then(() => page('/'))
   }
 
@@ -93,14 +93,15 @@ var app = app || {};
       url: `${__API_URL__}/api/v1/books/update/${book.book_id}`,
       method: 'PUT',
       data: book
-    }).then(data => {
-      console.log(data)
     })
+      // .then(data => {
+      //   console.log(data)
+      // })
       .then(() => page('/'))
   }
 
   function errorCallback(error) {
-    console.error('this is the error message',error);
+    //console.error('this is the error message',error);
     app.errorView.initErrorPage(error);
   }
   module.Book = Book;
