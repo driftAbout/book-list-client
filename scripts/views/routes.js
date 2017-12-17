@@ -18,7 +18,7 @@ $(function() {
 //check for home in url when using back and forward buttons
 window.onpopstate = function(event) {
   if (event.state && event.state.path === `${baseURL}/`){
-    console.log(event.state.path);
+  //  console.log(event.state.path);
     window.history.go(`${baseURL}/`);
   }
 };
