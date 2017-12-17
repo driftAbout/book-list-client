@@ -30,7 +30,7 @@ page('/books/add/:id', ctx => app.Book.insertFromSearch(ctx));
 page('/books/:id', ctx => app.Book.fetchOne(ctx, app.bookView.initDetailPage));
 page('/search-results/:id', ctx => app.bookView.initDetailPage(app.Book.all[ctx.params.id]));
 
-page(baseURL, ctx => {
+page('/', ctx => {
   console.log(ctx);
 })
 
