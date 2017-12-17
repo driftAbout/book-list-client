@@ -36,6 +36,6 @@ page();
 window.onpopstate = function(event) {
   if (event.state.path === `${baseURL}/`){
     console.log(event.state.path);
-    document.location.href=`${baseURL}/`;
+    //document.location.href=`${baseURL}/`;
   }
 };
