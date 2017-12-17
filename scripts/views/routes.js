@@ -6,7 +6,7 @@ $(function(){
   //$('a').attr('href', `${baseURL}${$(this).attr('href')}`);
   $('a').on('click', function(){
     console.log('clicked', $(this).attr('href'))
-    $(this).attr('href'`${baseURL}${$(this).attr('href')}`);
+    $(this).attr('href',`${baseURL}${$(this).attr('href')}`);
   })});
 
 page.base(baseURL);
