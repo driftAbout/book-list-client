@@ -29,6 +29,7 @@ page.base(baseURL);
 ///****************************///
 ///*****End Production code****///
 
+
 page('/', app.Book.fetchAll(app.bookView.initIndexPage));
 page('/books/new', ctx => app.bookView.initFormPage(ctx));
 page('/admin', app.adminView.initAdminViewPage);
