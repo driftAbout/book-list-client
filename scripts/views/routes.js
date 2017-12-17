@@ -34,7 +34,8 @@ page();
 //Big fix... history state will not reload home
 //check for home in url when using back and forward buttons
 window.onpopstate = function(event) {
-  if (event.state.path === `${baseURL}/`){
+
+  if (event.state && event.state.path === `${baseURL}/`){
     console.log(event.state.path);
     //document.location.href=`${baseURL}/`;
   }
