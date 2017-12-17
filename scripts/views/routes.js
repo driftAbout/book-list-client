@@ -13,10 +13,21 @@ $(function() {
     }
   })
 });
+
+//Big fix... history state will not reload home
+//check for home in url when using back and forward buttons
+window.onpopstate = function(event) {
+  if (event.state && event.state.path === `${baseURL}/`){
+    console.log(event.state.path);
+    window.history.go(`${baseURL}/`);
+  }
+};
+
 //append the baseURL to the routes
 page.base(baseURL);
 
 ///****************************///
+///*****End Production code****///
 
 page('/', app.Book.fetchAll(app.bookView.initIndexPage));
 page('/books/new', ctx => app.bookView.initFormPage(ctx));
@@ -29,14 +40,3 @@ page('/books/:id', ctx => app.Book.fetchOne(ctx, app.bookView.initDetailPage));
 page('/search-results/:id', ctx => app.bookView.initDetailPage(app.Book.all[ctx.params.id]));
 
 page();
-
-
-//Big fix... history state will not reload home
-//check for home in url when using back and forward buttons
-window.onpopstate = function(event) {
-
-  if (event.state && event.state.path === `${baseURL}/`){
-    console.log(event.state.path);
-    //document.location.href=`${baseURL}/`;
-  }
-};
