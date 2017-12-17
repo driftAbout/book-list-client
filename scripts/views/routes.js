@@ -1,13 +1,15 @@
 'use strict';
 
+const baseURL = '/book-list-client'
 
 $(function(){
+  $('a').attr('href', `baseURL${$(this).attr('href')}`);
   $('a').on('click', function(){
     console.log('clicked', $(this).attr('href'))
-    $(this).attr(`/book-list-client${$(this).attr('href')}`);
+    // $(this).attr(`/book-list-client${$(this).attr('href')}`);
   })});
 
-page.base('/book-list-client');
+page.base(baseURL);
 // page.base('.');
 // if(window.location.pathname !== '/') {
 //   page.base('/book-list-client');
