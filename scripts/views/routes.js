@@ -20,7 +20,7 @@ page.base(baseURL);
 
 
 
-page('/', ctx => {ctx.beenHere = true; app.Book.fetchAll(app.bookView.initIndexPage)});
+page('/', ctx => {console.log(ctx); app.Book.fetchAll(app.bookView.initIndexPage)});
 page('/books/new', ctx => app.bookView.initFormPage(ctx));
 page('/admin', app.adminView.initAdminViewPage);
 page('/search', () => app.bookView.initSearchFormPage(app.bookView.initSearchResultsPage));
@@ -32,7 +32,7 @@ page('/search-results/:id', ctx => app.bookView.initDetailPage(app.Book.all[ctx.
 
 page('/', (ctx) => {
   console.log(ctx);
-  if (!ctx.beenHere) app.Book.fetchAll(app.bookView.initIndexPage);
+  if (!ctx.init) app.Book.fetchAll(app.bookView.initIndexPage);
 });
 
 //page({dispatch:false});
