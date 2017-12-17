@@ -35,6 +35,7 @@ page();
 //check for home in url when using back and forward buttons
 window.onpopstate = function(event) {
   if (event.state.path === `${baseURL}/`){
-    page('/')
+    console.log(event.state.path)
+    page('/');
   }
 };
