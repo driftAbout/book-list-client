@@ -20,6 +20,7 @@ page.base(baseURL);
 
 
 window.onpopstate = function(event) {
+  console.log(event.state);
   if (event.state === baseURL){
     console.log(event.state);
   }
