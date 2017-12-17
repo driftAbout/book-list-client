@@ -4,7 +4,7 @@ var baseURL = '/book-list-client';
 
 $(function(){
   //$('a').attr('href', `${baseURL}${$(this).attr('href')}`);
-  $('li, button').on('click', 'a', function() {
+  $('body').on('click', 'a', function() {
     console.log('clicked', $(this).attr('href'))
     $(this).attr('href',`${baseURL}${$(this).attr('href')}`);
   })});
