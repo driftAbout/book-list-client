@@ -1,19 +1,21 @@
 'use strict';
 
+
+//********************************//
+/***Code to make <a> tags work with gitHub pages ***/
+
 var baseURL = '/book-list-client';
-
-$(function(){
-  //$('a').attr('href', `${baseURL}${$(this).attr('href')}`);
+$(function() {
+  //append the baseURL to <a>
   $('body').on('click', 'a', function() {
-    console.log('clicked', $(this).attr('href'))
     $(this).attr('href',`${baseURL}${$(this).attr('href')}`);
-  })});
-
+  })
+});
+//append the baseURL to the routes
 page.base(baseURL);
-// page.base('.');
-// if(window.location.pathname !== '/') {
-//   page.base('/book-list-client');
-// }
+
+///****************************///
+
 
 page('/', app.Book.fetchAll(app.bookView.initIndexPage));
 page('/books/new', ctx => app.bookView.initFormPage(ctx));
