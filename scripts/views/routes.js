@@ -1,6 +1,6 @@
 'use strict';
 
-const baseURL = '/book-list-client'
+var baseURL = '/book-list-client'
 
 $(function(){
   $('a').attr('href', `baseURL${$(this).attr('href')}`);
