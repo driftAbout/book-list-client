@@ -36,3 +36,4 @@ page('/search-results/:id', ctx => app.bookView.initDetailPage(app.Book.all[ctx.
 // });
 
 page({dispatch:false});
+page();
