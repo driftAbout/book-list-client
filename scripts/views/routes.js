@@ -35,4 +35,4 @@ page('/', (ctx) => {
   if (!ctx.init) app.Book.fetchAll(app.bookView.initIndexPage);
 });
 
-page({click: false});
+page({dispatch:false});
