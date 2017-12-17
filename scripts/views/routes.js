@@ -35,5 +35,5 @@ page('/search-results/:id', ctx => app.bookView.initDetailPage(app.Book.all[ctx.
 //   if (!ctx.init) app.Book.fetchAll(app.bookView.initIndexPage);
 // });
 
-page({dispatch:false});
+//page({dispatch:false});
 page();
