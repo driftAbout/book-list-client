@@ -19,6 +19,10 @@ page.base(baseURL);
 ///****************************///
 
 
+window.onpopstate = function(event) {
+  console.log("location: " + document.location + ", state: " + JSON.stringify(event.state));
+};
+
 
 page('/', app.Book.fetchAll(app.bookView.initIndexPage));
 page('/books/new', ctx => app.bookView.initFormPage(ctx));
