@@ -20,7 +20,7 @@ var app = app || {};
         .then(data => {
           if (data === '1') {
             localStorage.admin = '1';
-            page('/');
+            route('/');
           }
           if (data === '0') {
             app.errorView.initErrorPage({status: 'invalid', statusText: 'Incorrect Pass Code'});

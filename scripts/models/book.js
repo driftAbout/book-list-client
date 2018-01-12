@@ -55,7 +55,7 @@ var app = app || {};
   Book.insertFromSearch = function(book) {
     //console.log('inside insert from search',book);
     Book.create(Book.all[book.params.id]);
-    page('/');
+    //route('/');
   }
 
   Book.create = function(book) {
@@ -85,7 +85,7 @@ var app = app || {};
       // .then(data => {
       //   console.log(data)
       // })
-      .then(() => page('/'))
+      .then(() => route('/'))
   }
 
   Book.update = function(book) {
@@ -97,7 +97,7 @@ var app = app || {};
       // .then(data => {
       //   console.log(data)
       // })
-      .then(() => page('/'))
+      .then(() => route('/'))
   }
 
   function errorCallback(error) {
