@@ -61,23 +61,23 @@ var app = app || {};
     if(!callback){
       //getRoute returns a function reference and object
       //if the route has parameters, the object will contain the parameter values
-      let {callback, ctx} = getRoute(route);
+      let {callback, ctx, historyOpt} = getRoute(route);
       //if a route was not found, do nothing
       if(!callback) return;
       //if a route was found, set the history state
       //if the route was called from the popstate event, don't set th3 history state again
       console.log('linkRoute', route);
-      console.log('window_pn', window.location.pathname)
-      console.log('history_before', window.history.state)
-
-      if (window.location.pathname !== route) history.pushState( ctx, null, route);
+      console.log('historyOpt', historyOpt)
+      
+      if (window.location.pathname !== route && historyOpt) history.pushState( ctx, null, route);
       console.log('history_after', window.history.state)
       //if (window.location.pathname !== route) history.replaceState( ctx, null, route);
       //invoke the callback function with the object as an argument
       return callback(ctx);
     }
     //if there were two arguments, route and callback, set the properties in the linkRoutes map object
-    setRoute.call([route, callback]);
+    //setRoute.call([route, callback]);
+    setRoute.call(args);
   }
 
   linkRoute.base = function(link_base) {
@@ -89,7 +89,10 @@ var app = app || {};
     //even if the callback doesn't require an object, it is used with the history state
     let ctx = {route: route};
     //if the route does not have parameters, it will have a direct match accessible with standard Map methods
-    if (linkRoutes.has(route)) return {callback: linkRoutes.get(route), ctx: ctx};
+    if (linkRoutes.has(route)){
+      console.log('callback', linkRoutes.get(route).callback);
+      return {callback: linkRoutes.get(route).callback, ctx: ctx, historyOpt: linkRoutes.get(route).historyOpt};
+    }
     //if there was not a direct match, check the route with regex against routes with parameters
     let value = searchRoutes(route);
     //if no match was found, return an empty object
@@ -109,15 +112,17 @@ var app = app || {};
       return acc;
     }, {} );
     ctx.params = params;
-    return {callback: callback, ctx: ctx};
+    return {callback: callback, ctx: ctx, historyOpt: value.historyOpt};
   };
 
   function setRoute(){
     let [route, callback] = this;
+    let historyOpt = this.length === 2 ? true : this[2];
     //if the route does not contain a parameter, no /:something/, use the Map set method with the route as key and callback as value
-    if (!route.match(/:[^/]+/g)) return linkRoutes.set(route, callback);
+    //if (!route.match(/:[^/]+/g)) return linkRoutes.set(route, callback);
+    if (!route.match(/:[^/]+/g)) return linkRoutes.set(route, {callback: callback, historyOpt: historyOpt});
     //if the route has a parameter, use the route as key and create a regex expression and array, for comparison for searching, as value
-    linkRoutes.set(route, {regex: route.replace(/:[^/]+/g, '[^/]+') , path_array: route.split(/\/:?/).filter(val=>val), callback: callback});
+    linkRoutes.set(route, {regex: route.replace(/:[^/]+/g, '[^/]+') , path_array: route.split(/\/:?/).filter(val=>val), callback: callback, historyOpt: historyOpt});
   }
 
   const hasRoute = (route) => {
@@ -182,10 +187,13 @@ route('/', () => app.Book.fetchAll(app.bookView.initIndexPage));
 route('/books/new', ctx => app.bookView.initFormPage(ctx));
 route('/admin', app.adminView.initAdminViewPage);
 route('/search', () => app.bookView.initSearchFormPage(app.bookView.initSearchResultsPage));
-route('/books/delete/:id', ctx => app.Book.delete(ctx));
-route('/books/update/:id', ctx => app.Book.fetchOne(ctx, app.bookView.initUpdatePage));
-route('/books/add/:id', ctx => app.Book.insertFromSearch(ctx));
+route('/books/delete/:id', ctx => app.Book.delete(ctx), false);
+route('/books/update/:id', ctx => app.Book.fetchOne(ctx, app.bookView.initUpdatePage), false);
+route('/books/add/:id', ctx => app.Book.insertFromSearch(ctx), false);
 route('/books/:id', ctx => app.Book.fetchOne(ctx, app.bookView.initDetailPage));
-route('/search-results/:id', ctx => app.bookView.initDetailPage(app.Book.all[ctx.params.id]));
+route('/search-results/:id', ctx => app.bookView.initDetailPage(app.Book.all[ctx.params.id]), false);
+
+//init routes
 route();
+//call first route
 route('/');

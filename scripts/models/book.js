@@ -55,7 +55,7 @@ var app = app || {};
   Book.insertFromSearch = function(book) {
     //console.log('inside insert from search',book);
     Book.create(Book.all[book.params.id]);
-    //route('/');
+    route('/');
   }
 
   Book.create = function(book) {
