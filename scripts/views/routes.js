@@ -167,8 +167,18 @@ var app = app || {};
     //if the page reloads and has been redirected to the home page, check the url to se if it matches
     //if it doesn't invoke the callback for that route
     window.addEventListener('load', function(e) {
-      if(hasRoute(e.target.location.pathname) && e.target.location.pathname !== '/'){
-        return linkRoute(event.target.location.pathname);
+      console.log('load target.referrer', e.target.referrer);
+      console.log('e.location.pathname', e.target.baseURI);
+      console.log('route', e.target.referrer.replace(e.target.baseURI, '/'))
+      let referrerRoute = e.target.location.pathname
+      if( e.target.referrer ){
+        referrerRoute = e.target.referrer.replace(e.target.baseURI, '/')
+      }
+      // if(hasRoute(e.target.location.pathname) && e.target.location.pathname !== '/'){
+      //   return linkRoute(event.target.location.pathname);
+      // }
+      if(hasRoute(referrerRoute) && referrerRoute !== '/'){
+        return linkRoute(referrerRoute);
       }
       console.log('load')
       if(e.target.location.pathname !== '/') return history.pushState( {}, null, '/');
