@@ -54,6 +54,7 @@ var app = app || {};
       //if a route was found, set the history state
       //if the route was called from the popstate event, don't set th3 history state again 
       console.log('window.location.pathname', window.location.pathname);
+      console.log('BASE AND ROUTE:', `${base}${route}`);
       if (window.location.pathname !== route && historyOpt) history.pushState( ctx, null, route);
       //if (window.location.pathname !== route) history.replaceState( ctx, null, route);
       //invoke the callback function with the object as an argument
@@ -168,6 +169,8 @@ var app = app || {};
 })(app);
 
 var route = app.linkRoute;
+
+route.base('/book-list-client');
 
 route('/', () => app.Book.fetchAll(app.bookView.initIndexPage));
 route('/books/new', ctx => app.bookView.initFormPage(ctx));
