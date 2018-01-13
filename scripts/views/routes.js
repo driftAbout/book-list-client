@@ -135,7 +135,8 @@ var app = app || {};
     /*********** History popstate event  ***********/
     window.onpopstate = function (event){
       //if the state is undefined, route to home
-      if(!event.state) return linkRoute('/');
+      let route = base ? `${base}/` : '/';
+      if(!event.state) return linkRoute(route);
       //use the route property of the history state as the route
       linkRoute(event.state.route);
     };
@@ -159,7 +160,8 @@ var app = app || {};
       if(hasRoute(referrerRoute) && referrerRoute !== '/'){
         return linkRoute(referrerRoute);
       }
-      if(e.target.location.pathname !== '/') return history.pushState( {}, null, '/');
+      let route = base ? `${base}/` : '/';
+      if(e.target.location.pathname !== route) return history.pushState( {}, null, route);
     });
 
   }
