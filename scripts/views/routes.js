@@ -65,10 +65,7 @@ var app = app || {};
       //if a route was not found, do nothing
       if(!callback) return;
       //if a route was found, set the history state
-      //if the route was called from the popstate event, don't set th3 history state again
-      console.log('linkRoute', route);
-      console.log('historyOpt', historyOpt)
-      
+      //if the route was called from the popstate event, don't set th3 history state again 
       if (window.location.pathname !== route && historyOpt) history.pushState( ctx, null, route);
       console.log('history_after', window.history.state)
       //if (window.location.pathname !== route) history.replaceState( ctx, null, route);
@@ -90,8 +87,8 @@ var app = app || {};
     let ctx = {route: route};
     //if the route does not have parameters, it will have a direct match accessible with standard Map methods
     if (linkRoutes.has(route)){
-      console.log('callback', linkRoutes.get(route).callback);
-      return {callback: linkRoutes.get(route).callback, ctx: ctx, historyOpt: linkRoutes.get(route).historyOpt};
+      let {callback, historyOpt} = linkRoutes.get(route);
+      return {callback: callback, ctx: ctx, historyOpt: historyOpt};
     }
     //if there was not a direct match, check the route with regex against routes with parameters
     let value = searchRoutes(route);
@@ -167,16 +164,10 @@ var app = app || {};
     //if the page reloads and has been redirected to the home page, check the url to se if it matches
     //if it doesn't invoke the callback for that route
     window.addEventListener('load', function(e) {
-      console.log('load target.referrer', e.target.referrer);
-      console.log('e.location.pathname', e.target.baseURI);
-      console.log('route', e.target.referrer.replace(e.target.baseURI, '/'))
       let referrerRoute = e.target.location.pathname
       if( e.target.referrer ){
         referrerRoute = e.target.referrer.replace(e.target.baseURI, '/')
       }
-      // if(hasRoute(e.target.location.pathname) && e.target.location.pathname !== '/'){
-      //   return linkRoute(event.target.location.pathname);
-      // }
       if(hasRoute(referrerRoute) && referrerRoute !== '/'){
         return linkRoute(referrerRoute);
       }
