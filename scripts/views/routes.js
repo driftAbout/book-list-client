@@ -29,19 +29,6 @@
 ///****************************///
 ///*****End Production code****///
 
-
-// page('/', app.Book.fetchAll(app.bookView.initIndexPage));
-// page('/books/new', ctx => app.bookView.initFormPage(ctx));
-// page('/admin', app.adminView.initAdminViewPage);
-// page('/search', () => app.bookView.initSearchFormPage(app.bookView.initSearchResultsPage));
-// page('/books/delete/:id', ctx => app.Book.delete(ctx));
-// page('/books/update/:id', ctx => app.Book.fetchOne(ctx, app.bookView.initUpdatePage));
-// page('/books/add/:id', ctx => app.Book.insertFromSearch(ctx));
-// page('/books/:id', ctx => app.Book.fetchOne(ctx, app.bookView.initDetailPage));
-// page('/search-results/:id', ctx => app.bookView.initDetailPage(app.Book.all[ctx.params.id]));
-
-// page();
-
 var app = app || {};
 
 (function(module) {
@@ -67,7 +54,6 @@ var app = app || {};
       //if a route was found, set the history state
       //if the route was called from the popstate event, don't set th3 history state again 
       if (window.location.pathname !== route && historyOpt) history.pushState( ctx, null, route);
-      console.log('history_after', window.history.state)
       //if (window.location.pathname !== route) history.replaceState( ctx, null, route);
       //invoke the callback function with the object as an argument
       return callback(ctx);
@@ -145,7 +131,6 @@ var app = app || {};
 
     /*********** History popstate event  ***********/
     window.onpopstate = function (event){
-      console.log('history', event.state)
       //if the state is undefined, route to home
       if(!event.state) return linkRoute('/');
       //use the route property of the history state as the route
