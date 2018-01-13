@@ -156,7 +156,6 @@ var app = app || {};
       if(hasRoute(referrerRoute) && referrerRoute !== '/'){
         return linkRoute(referrerRoute);
       }
-      console.log('load')
       if(e.target.location.pathname !== '/') return history.pushState( {}, null, '/');
     });
 
