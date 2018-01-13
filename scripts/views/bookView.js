@@ -5,15 +5,17 @@ var app = app || {};
 
   function resetView() {
     $('.container').hide();
-
   }
   
+  $('nav').on('click', 'li, .icon-menu', function() {
+    $('#menu-list').slideToggle()
+  } );
 
   bookView.initIndexPage = function() {
     resetView();
     $('#book-view').show();
     $('#book-list').empty();
-    $('nav').on('click', 'li, .icon-menu', function(){ $('#menu-list').slideToggle()} );
+
     app.Book.all.map(book => {
       $('#book-list').append(book.toHtml())
     });
@@ -47,7 +49,7 @@ var app = app || {};
         description: event.target.description.value,
       }
       app.Book.create(book);
-      page('/');
+      route('/');
     })
   }
 
