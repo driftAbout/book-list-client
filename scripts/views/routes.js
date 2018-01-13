@@ -44,10 +44,13 @@ var app = app || {};
     //even if the callback doesn't require an object, it is used with the history state
     let ctx = {route: route};
     //if the route does not have parameters, it will have a direct match accessible with standard Map methods
-    if (linkRoutes.has(route)){
-      let {callback, historyOpt} = linkRoutes.get(route);
-      return {callback: callback, ctx: ctx, historyOpt: historyOpt};
-    }
+    // if (linkRoutes.has(route)){
+    //   let {callback, historyOpt} = linkRoutes.get(route);
+    //   return {callback: callback, ctx: ctx, historyOpt: historyOpt};
+    // }
+    
+    if (linkRoutes.has(route)) return Object.assign(linkRoutes.get(route), {ctx: ctx});
+
     //if there was not a direct match, check the route with regex against routes with parameters
     let value = searchRoutes(route);
     //if no match was found, return an empty object
