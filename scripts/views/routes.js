@@ -28,7 +28,8 @@ var app = app || {};
       //if the route was called from the popstate event, don't set th3 history state again
       let url = base ? `${base}${route}` : route;
       console.log('window.location.pathname', window.location.pathname, 'route', route, 'url', url)
-      if (window.location.pathname !== route && historyOpt) history.pushState( ctx, null, url);
+      //if (window.location.pathname !== route && historyOpt) history.pushState( ctx, null, url);
+      if (window.location.pathname !== url && historyOpt) history.pushState( ctx, null, url);
       //invoke the callback function with the object as an argument
       return callback(ctx);
     }
