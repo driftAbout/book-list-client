@@ -55,8 +55,9 @@ var app = app || {};
       //if the route was called from the popstate event, don't set th3 history state again 
       console.log('window.location.pathname', window.location.pathname);
       console.log('BASE AND ROUTE:', `${base}${route}`);
-      route = base ? `${base}${route}` : route;
-      if (window.location.pathname !== route && historyOpt) history.pushState( ctx, null, route);
+      //route = base ? `${base}${route}` : route;
+      let url = base ? `${base}${route}` : route;
+      if (window.location.pathname !== route && historyOpt) history.pushState( ctx, null, url);
       //if (window.location.pathname !== route) history.replaceState( ctx, null, route);
       //invoke the callback function with the object as an argument
       return callback(ctx);
@@ -135,7 +136,7 @@ var app = app || {};
     /*********** History popstate event  ***********/
     window.onpopstate = function (event){
       //if the state is undefined, route to home
-      let route = base ? `${base}/` : '/';
+      //let route = base ? `${base}/` : '/';
       if(!event.state) return linkRoute(route);
       //use the route property of the history state as the route
       linkRoute(event.state.route);
