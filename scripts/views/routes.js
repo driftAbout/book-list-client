@@ -174,7 +174,9 @@ var app = app || {};
 
 var route = app.linkRoute;
 
-route.base('/book-list-client');
+console.log('window.location', window.location.host);
+
+if (window.location.host.indexOf('github.io') !== -1) route.base('/book-list-client');
 
 route('/', () => app.Book.fetchAll(app.bookView.initIndexPage));
 route('/books/new', ctx => app.bookView.initFormPage(ctx));
