@@ -53,6 +53,7 @@ var app = app || {};
       if(!callback) return;
       //if a route was found, set the history state
       //if the route was called from the popstate event, don't set th3 history state again 
+      console.log('window.location.pathname', window.location.pathname);
       if (window.location.pathname !== route && historyOpt) history.pushState( ctx, null, route);
       //if (window.location.pathname !== route) history.replaceState( ctx, null, route);
       //invoke the callback function with the object as an argument
