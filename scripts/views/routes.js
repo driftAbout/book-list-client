@@ -104,6 +104,7 @@ var app = app || {};
     window.onpopstate = function (event){
       //if the state is undefined, route to home
       if(!event.state) return linkRoute('/');
+      console.log('event.state.route', event.state.route)
       //use the route property of the history state as the route
       linkRoute(event.state.route);
     };
