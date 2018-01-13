@@ -1,42 +1,15 @@
 'use strict';
 
-
-//********************************//
-/***Code to make <a> tags work with gitHub pages ***/
-
-// var baseURL = '/book-list-client';
-// $(function() {
-//   //append the baseURL to <a>
-//   $('body').on('click', 'a', function() {
-//     if (! $(this).attr('href').startsWith(baseURL) ){
-//       $(this).attr('href',`${baseURL}${$(this).attr('href')}`);
-//     }
-//   })
-// });
-
-//Big fix... history state will not reload home
-//check for home in url when using back and forward buttons
-// window.onpopstate = function(event) {
-//   if (event.state && event.state.path === `${baseURL}/`){
-//   //  console.log(event.state.path);
-//     window.history.go(`${baseURL}/`);
-//   }
-// };
-
-//append the baseURL to the routes
-// page.base(baseURL);
-
-///****************************///
-///*****End Production code****///
-
 var app = app || {};
 
 (function(module) {
-
+  //object to store route callbacks
   var linkRoutes = new Map();
 
+  // variable to store home path depending on dev or production environment
   var base;
 
+  //main route function
   function linkRoute(...args){
     //if there are no args, then activate the event handlers
     //the function needs to be called with out args to activate
@@ -52,18 +25,13 @@ var app = app || {};
       //if a route was not found, do nothing
       if(!callback) return;
       //if a route was found, set the history state
-      //if the route was called from the popstate event, don't set th3 history state again 
-      console.log('window.location.pathname', window.location.pathname);
-      console.log('BASE AND ROUTE:', `${base}${route}`);
-      //route = base ? `${base}${route}` : route;
+      //if the route was called from the popstate event, don't set th3 history state again
       let url = base ? `${base}${route}` : route;
       if (window.location.pathname !== route && historyOpt) history.pushState( ctx, null, url);
-      //if (window.location.pathname !== route) history.replaceState( ctx, null, route);
       //invoke the callback function with the object as an argument
       return callback(ctx);
     }
     //if there were two arguments, route and callback, set the properties in the linkRoutes map object
-    //setRoute.call([route, callback]);
     setRoute.call(args);
   }
 
@@ -105,8 +73,7 @@ var app = app || {};
   function setRoute(){
     let [route, callback] = this;
     let historyOpt = this.length === 2 ? true : this[2];
-    //if the route does not contain a parameter, no /:something/, use the Map set method with the route as key and callback as value
-    //if (!route.match(/:[^/]+/g)) return linkRoutes.set(route, callback);
+    //if the route does not contain a parameter, no /:something/, use the Map set method with the route as key and {callback, historyOp} as object as the value
     if (!route.match(/:[^/]+/g)) return linkRoutes.set(route, {callback: callback, historyOpt: historyOpt});
     //if the route has a parameter, use the route as key and create a regex expression and array, for comparison for searching, as value
     linkRoutes.set(route, {regex: route.replace(/:[^/]+/g, '[^/]+') , path_array: route.split(/\/:?/).filter(val=>val), callback: callback, historyOpt: historyOpt});
@@ -136,7 +103,6 @@ var app = app || {};
     /*********** History popstate event  ***********/
     window.onpopstate = function (event){
       //if the state is undefined, route to home
-      //let route = base ? `${base}/` : '/';
       if(!event.state) return linkRoute(route);
       //use the route property of the history state as the route
       linkRoute(event.state.route);
@@ -168,16 +134,15 @@ var app = app || {};
   }
 
   module.linkRoute = linkRoute;
-  module.linkRoutes = linkRoutes;
-
+  
 })(app);
 
 var route = app.linkRoute;
 
-console.log('window.location', window.location.host);
-
+//set the base if the project is served from git hub pages
 if (window.location.host.indexOf('github.io') !== -1) route.base('/book-list-client');
 
+//set routes
 route('/', () => app.Book.fetchAll(app.bookView.initIndexPage));
 route('/books/new', ctx => app.bookView.initFormPage(ctx));
 route('/admin', app.adminView.initAdminViewPage);
