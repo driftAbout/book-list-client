@@ -25,7 +25,7 @@ var app = app || {};
       //if a route was not found, do nothing
       if(!callback) return;
       //if a route was found, set the history state
-      //if the route was called from the popstate event, don't set the history state again
+      //if the route was called from the popstate event, the pathname and route will be the same so don't set the history state again
       let url = base ? `${base}${route}` : route;
       if (window.location.pathname !== url && historyOpt) history.pushState( ctx, null, url);
       //invoke the callback function with the object as an argument
@@ -35,6 +35,7 @@ var app = app || {};
     setRoute.call(args);
   }
 
+  //method to set the base variable => route.base('/myGitHUbRepoName')
   linkRoute.base = function(link_base) {
     base = link_base;
   };
@@ -44,13 +45,8 @@ var app = app || {};
     //even if the callback doesn't require an object, it is used with the history state
     let ctx = {route: route};
     //if the route does not have parameters, it will have a direct match accessible with standard Map methods
-    // if (linkRoutes.has(route)){
-    //   let {callback, historyOpt} = linkRoutes.get(route);
-    //   return {callback: callback, ctx: ctx, historyOpt: historyOpt};
-    // }
-    
+    //add ctx to the object returned from linkRoutes.get(route)
     if (linkRoutes.has(route)) return Object.assign(linkRoutes.get(route), {ctx: ctx});
-
     //if there was not a direct match, check the route with regex against routes with parameters
     let value = searchRoutes(route);
     //if no match was found, return an empty object
@@ -75,6 +71,7 @@ var app = app || {};
 
   function setRoute(){
     let [route, callback] = this;
+    //historyOpt is true unless it is set to false
     let historyOpt = this.length === 2 ? true : this[2];
     //if the route does not contain a parameter, no /:something/, use the Map set method with the route as key and {callback, historyOp} as object as the value
     if (!route.match(/:[^/]+/g)) return linkRoutes.set(route, {callback: callback, historyOpt: historyOpt});
@@ -123,17 +120,15 @@ var app = app || {};
     //if the page reloads and has been redirected to the home page, check the url to se if it matches
     //if it doesn't invoke the callback for that route
     window.addEventListener('load', function(e) {
-      let referrerRoute = e.target.location.pathname
-      if( e.target.referrer ){
-        referrerRoute = e.target.referrer.replace(e.target.baseURI, '/')
-      }
-      if(hasRoute(referrerRoute) && referrerRoute !== '/'){
-        return linkRoute(referrerRoute);
-      }
-      let route = base ? `${base}/` : '/';
-      if(e.target.location.pathname !== route) return history.pushState( {}, null, route);
+      let referrerRoute = e.target.location.pathname;
+      //if the page was called from the 404 redirect, get the relative path
+      if( e.target.referrer ) referrerRoute = e.target.referrer.replace(e.target.baseURI, '/');
+      //if the relative path is not the home path, and is a saved route, then invoke the callback
+      if(hasRoute(referrerRoute) && referrerRoute !== '/') return linkRoute(referrerRoute);
+      //if the path is not the home path or a path saved as a route, then redirect to the home
+      let url = base ? `${base}/` : '/';
+      if(e.target.location.pathname !== '/') return history.pushState( {}, null, url);
     });
-
   }
 
   module.linkRoute = linkRoute;
